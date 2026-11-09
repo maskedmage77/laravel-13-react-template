@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*
+ * Tailwind 4 theme + utilities only.
+ *
+ * Preflight is deliberately not imported: it resets the same elements Mantine
+ * styles, and loads before Mantine's CSS, so forms end up unstyled. Utilities
+ * are layered so Mantine's own rules still win where they overlap.
+ */
+@layer theme, base, mantine, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@plugin '@tailwindcss/forms';

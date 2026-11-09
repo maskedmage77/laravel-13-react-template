@@ -1,0 +1,35 @@
+services:
+  app:
+    container_name: laravel-13-mantine-app
+    ports:
+      # App and the Vite dev server (must match VITE_PORT below).
+      - "80:8000"
+      - "5173:5173"
+    volumes:
+      - .:/var/www/html
+    environment:
+      VITE_PORT: 5173
+    build:
+      context: .
+      dockerfile: ./docker/docker.dev.Dockerfile
+    command: bash -c "composer install && php artisan serve --host=0.0.0.0 --port=8000"
+    restart: "no"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8
+    container_name: laravel-13-mantine-db
+    ports:
+      - "3306:3306"
+    restart: "no"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
