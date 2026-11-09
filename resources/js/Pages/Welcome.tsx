@@ -1,6 +1,6 @@
 import GuestLayout from '@/Layouts/GuestLayout';
 import { PageProps } from '@/types';
-import { Anchor, Badge, Group, List, Stack, Text, Title } from '@mantine/core';
+import { Anchor, Badge, Code, Group, List, Stack, Text, Title } from '@mantine/core';
 import { Head, Link } from '@inertiajs/react';
 
 type Props = {
@@ -45,6 +45,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion, canLogin, ca
                 <List.Item>Mantine AppShell layout with dark/light toggle</List.Item>
                 <List.Item>Users CRUD as a starting pattern</List.Item>
                 <List.Item>Ziggy routes, TypeScript, permission-gated nav</List.Item>
+                <List.Item>
+                    Ubuntu for text, <Code>Ubuntu Mono</Code> for code
+                </List.Item>
             </List>
 
             <Group justify="center" mt="xl">

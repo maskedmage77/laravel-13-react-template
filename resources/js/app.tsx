@@ -9,7 +9,8 @@ import '../css/app.css';
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 const theme = createTheme({
-  fontFamily: 'Jost, Helvetica, sans-serif',
+  fontFamily: 'Ubuntu, system-ui, sans-serif',
+  fontFamilyMonospace: 'Ubuntu Mono, ui-monospace, monospace',
   primaryColor: 'green',
   colors: {
     gray: [

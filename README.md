@@ -90,7 +90,7 @@ app/
   Http/Controllers/          Dashboard, Profile, Auth/*, UserController (CRUD example)
   Http/Middleware/           HandleInertiaRequests — shared props (auth, roles, permissions)
 resources/
-  css/app.css                Tailwind layers + Jost font
+  css/app.css                Tailwind layers + Ubuntu / Ubuntu Mono webfonts
   js/
     app.tsx                  createInertiaApp entry (theme + providers)
     config.ts                client-side config from VITE_* vars
@@ -111,6 +111,8 @@ docker/                      dev + prod PHP images, nginx
 **Adding a resource.** Copy `UserController` and `Pages/Users/*`, add a `NavLink` in `Components/Navbar`, and add the route in `routes/web.php`.
 
 **Permissions.** `HandleInertiaRequests::share()` currently returns empty `roles` and `permissions` arrays. Wire those to your authorisation package (`spatie/laravel-permission` is the usual) and the navbar gating starts working with no further changes.
+
+**Fonts.** Ubuntu (300/400/500/700 + italics) and Ubuntu Mono (400/700) load from Google Fonts in `resources/css/app.css`; the Mantine theme points `fontFamily` at `Ubuntu` and `fontFamilyMonospace` at `Ubuntu Mono`. Both fall back to `system-ui` / `ui-monospace`, so the UI still looks right offline. To use a self-hosted face instead, drop the `@import` and add `@font-face` rules — nothing else needs to change.
 
 **Tailwind and Mantine coexist.** `resources/css/app.css` imports Tailwind's `theme` and `utilities` layers but *not* preflight — preflight resets Mantine's form styling. Add utilities freely; don't add `@import "tailwindcss"`.
 
